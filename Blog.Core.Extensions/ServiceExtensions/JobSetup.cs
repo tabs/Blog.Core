@@ -23,7 +23,8 @@ namespace Blog.Core.Extensions
 
             services.AddSingleton<IJobFactory, JobFactory>();
             services.AddTransient<Job_OperateLog_Quartz>();//Job使用瞬时依赖注入
-            services.AddTransient<Jd_Quartz>();//Job使用瞬时依赖注入            services.AddSingleton<ISchedulerCenter, SchedulerCenterServer>();
+            services.AddTransient<Jd_Quartz>();//Job使用瞬时依赖注入            
+            services.AddSingleton<ISchedulerCenter, SchedulerCenterServer>();
 			//任务注入
 			var baseType = typeof(IJob);
             var path = AppDomain.CurrentDomain.RelativeSearchPath ?? AppDomain.CurrentDomain.BaseDirectory;
