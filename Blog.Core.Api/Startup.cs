@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Blog.Core.Common;
+using Blog.Core.Common.Helper;
 using Blog.Core.Common.LogHelper;
 using Blog.Core.Extensions;
 using Blog.Core.Filter;
@@ -38,6 +39,7 @@ namespace Blog.Core
         public IWebHostEnvironment Env { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        [System.Obsolete]
         public void ConfigureServices(IServiceCollection services)
         {
             // 以下code可能与文章中不一样,对代码做了封装,具体查看右侧 Extensions 文件夹.
@@ -77,6 +79,9 @@ namespace Blog.Core
             {
                 services.AddAuthentication_JWTSetup();
             }
+            services.AddNodeServices(option => option.InvocationTimeoutMilliseconds = 180 * 1000);
+
+            services.AddSingleton<IQRCode, QRCodeHelper>();
 
             services.AddIpPolicyRateLimitSetup(Configuration);
 

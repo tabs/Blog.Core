@@ -271,6 +271,20 @@ namespace Blog.Core.Model.Seed
                     }
                     #endregion
 
+                    #region JDCookiesInfo
+                    if (!await myContext.Db.Queryable<JDCookiesInfo>().AnyAsync())
+                    {
+                        var data = JsonConvert.DeserializeObject<List<JDCookiesInfo>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "JDCookiesInfo"), Encoding.UTF8), setting);
+
+                        myContext.GetEntityDB<JDCookiesInfo>().InsertRange(data);
+                        Console.WriteLine("Table:JDCookiesInfo created success!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Table:JDCookiesInfo already exists...");
+                    }
+
+                    #endregion
                     ConsoleHelper.WriteSuccessLine($"Done seeding database!");
                 }
 

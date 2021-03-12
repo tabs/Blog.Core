@@ -51,6 +51,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.Core.EventBus", "Blog.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.Core.ConsoleApp", "Blog.Core.ConsoleApp\Blog.Core.ConsoleApp.csproj", "{0B3265A9-6716-4D28-8648-C64D5E692ACA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Core.TaskJd", "Blog.Core.JdTask\Blog.Core.TaskJd.csproj", "{B55DC878-086C-4945-9476-3353941FB0B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,10 @@ Global
 		{0B3265A9-6716-4D28-8648-C64D5E692ACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B3265A9-6716-4D28-8648-C64D5E692ACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B3265A9-6716-4D28-8648-C64D5E692ACA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B55DC878-086C-4945-9476-3353941FB0B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B55DC878-086C-4945-9476-3353941FB0B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B55DC878-086C-4945-9476-3353941FB0B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B55DC878-086C-4945-9476-3353941FB0B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

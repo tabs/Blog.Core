@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Blog.Core.Common.Helper;
 using Blog.Core.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -18,6 +20,29 @@ namespace Blog.Core.Controllers
     [Authorize]
     public class ImgController : Controller
     {
+        private IQRCode _iQRCode;
+
+        public ImgController (IQRCode iQRCode)
+        {
+            _iQRCode = iQRCode;
+        }
+
+        /// <summary>
+        /// 获取二维码
+        /// </summary>
+        /// <param name="url">存储内容</param>
+        /// <param name="pixel">像素大小</param>
+        /// <returns></returns>
+        [HttpGet("/api/qrcode")]
+        public async Task GetQRCode(string url, int pixel)
+        {
+            Response.ContentType = "image/jpeg";
+            var bitmap = _iQRCode.GetQRCode(url, pixel);
+            MemoryStream ms = new MemoryStream();
+            bitmap.Save(ms, ImageFormat.Jpeg);
+            await Response.Body.WriteAsync(ms.GetBuffer(), 0, Convert.ToInt32(ms.Length));
+        }
+
         // GET: api/Download
         /// <summary>
         /// 下载图片（支持中文字符）

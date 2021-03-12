@@ -261,6 +261,26 @@
             
             </summary>
         </member>
+        <member name="P:Blog.Core.Model.Models.JDCookiesInfo.jCreateId">
+            <summary>
+            创建ID
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.JDCookiesInfo.jStatus">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.JDCookiesInfo.jUpdateTime">
+            <summary> 
+            修改时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.JDCookiesInfo.jCreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
         <member name="T:Blog.Core.Model.Models.ModulePermission">
             <summary>
             菜单与按钮关系表

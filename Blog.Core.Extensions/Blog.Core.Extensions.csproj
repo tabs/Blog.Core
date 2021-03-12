@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Blog.Core.EventBus\Blog.Core.EventBus.csproj" />
+    <ProjectReference Include="..\Blog.Core.JdTask\Blog.Core.TaskJd.csproj" />
     <ProjectReference Include="..\Blog.Core.Services\Blog.Core.Services.csproj" />
     <ProjectReference Include="..\Blog.Core.Tasks\Blog.Core.Tasks.csproj" />
   </ItemGroup>
