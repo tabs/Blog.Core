@@ -281,6 +281,16 @@
             创建时间
             </summary>
         </member>
+        <member name="P:Blog.Core.Model.Models.JDLogsInfo.jId">
+            <summary>
+            京东账户表主键ID
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.JDLogsInfo.jCreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
         <member name="T:Blog.Core.Model.Models.ModulePermission">
             <summary>
             菜单与按钮关系表

@@ -292,6 +292,20 @@ namespace Blog.Core.Model.Seed
                     }
 
                     #endregion
+                    #region JDLogsInfo
+                    if (!await myContext.Db.Queryable<JDLogsInfo>().AnyAsync())
+                    {
+                        var data = JsonConvert.DeserializeObject<List<JDLogsInfo>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "JDLogsInfo"), Encoding.UTF8), setting);
+
+                        myContext.GetEntityDB<JDLogsInfo>().InsertRange(data);
+                        Console.WriteLine("Table:JDLogsInfo created success!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Table:JDLogsInfo already exists...");
+                    }
+
+                    #endregion
                     ConsoleHelper.WriteSuccessLine($"Done seeding database!");
                 }
 

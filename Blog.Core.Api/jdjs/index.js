@@ -1,18 +1,23 @@
-var fucUtils = require("./testjd");
+var funJdsign = require("./jdsign");
 var fucGetCookie = require("./getJdCookie");
 var httpUtils = require("./nobyda")
-// var ck = "pt_key=AAJgNGWFADBm4Mq59IDGlbSSyymLJrlLDIjGGipr4q8dpbkJ8iWF2tr_TghsXkdlQI2I8zQIEpo;pt_pin=jd_624f191cc0540;";
+var ck = "pt_key=AAJgNGWFADBm4Mq59IDGlbSSyymLJrlLDIjGGipr4q8dpbkJ8iWF2tr_TghsXkdlQI2I8zQIEpo;pt_pin=jd_624f191cc0540;";
 
 
 
 
-
+funJdsign.jdsign.JDSecKilling(ck).then(function (res) {
+    var msg = res;
+    console.log(msg);
+  }, function (err) {
+    console.log(err);
+  })
 
 //链式调用
-// fucUtils.jdfuc.JingDongBean(ck).then(function (res) {
+// funJdsign.jdsign.JingDongBean(ck).then(function (res) {
 //   var msg = res;
 //   console.log(msg);
-//   return fucUtils.jdfuc.JingDongStore(ck);
+//   return funJdsign.jdsign.JingDongStore(ck);
 // }, function (err) {
 //   console.log(err);
 // }).then(function (res) {
@@ -29,17 +34,32 @@ let userid = 0;
 var jdfunc = {
   all: async function (ck) {
     return await Promise.all([
-      fucUtils.jdfuc.JingDongBean(ck),
-      fucUtils.jdfuc.JingDongStore(ck)
+      funJdsign.jdsign.JingDongBean(ck),
+      funJdsign.jdsign.JingDongStore(ck),
+      funJdsign.jdsign.JingRongSteel(ck),
+      funJdsign.jdsign.JingDongTurn(ck),
+      funJdsign.jdsign.JDFlashSale(ck),
+      funJdsign.jdsign.JingDongCash(ck),
+      funJdsign.jdsign.JDMagicCube(ck,1),
+      funJdsign.jdsign.JingDongGetCash(ck),
+      funJdsign.jdsign.JingDongSubsidy(ck),
+      funJdsign.jdsign.JingDongShake(ck),
+      funJdsign.jdsign.JDSecKilling(ck)
     ]);
   },
-  jdsign: function (callback, ck) {
+  jdsign: function (callback, ckid, ck) {
+    // httpUtils.nobyda.log2File(`ckid:${ckid}\n`);
     jdfunc.all(ck).then(function (msg) {
       var allMsg = '';
       for (var i = 0; i < msg.length; i++) {
         allMsg += msg[i] + '\n';
       }
-      callback(null, allMsg);
+      var retvalue = {
+        id: ckid,
+        msg: allMsg,
+        ck: ck
+      }
+      callback(null, retvalue);
     }).catch((result) => {
       console.log(result)
     })
@@ -74,16 +94,5 @@ var jdfunc = {
     }
   }
 }
-// httpUtils.nobyda.log2File('dfsd\n');
-// httpUtils.nobyda.log2File('sdgag\n');
-// jdfunc.getQrCode(function(err,data){
-//   console.log(data);
-// })
-// jdfunc.getCookie((er, data) => {
-//   console.log(data);
-// })
-// console.log("test");
-// setTimeout(function(){
-//   console.log("done");
-// },10000);
+
 module.exports = jdfunc;
