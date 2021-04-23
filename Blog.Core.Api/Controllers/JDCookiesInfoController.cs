@@ -55,7 +55,6 @@ namespace Blog.Core.Api.Controllers
             _user = user;
         }
 
-
         [HttpGet]
         public async Task<MessageModel<PageModel<JDCookiesInfo>>> Get(int page = 1, string key = "", int intPageSize = 50)
         {
@@ -152,6 +151,7 @@ namespace Blog.Core.Api.Controllers
                             var cookiesInfo = resultck[0];
                             cookiesInfo.jUpdateTime = DateTime.Now;
                             cookiesInfo.jJDCookie = result.ck;
+                            cookiesInfo.jCreateId = result.userId;
                             cookiesInfo.jDesc = result.desc;
                             await _jDCookiesInfoServices.Update(cookiesInfo);
                         }
