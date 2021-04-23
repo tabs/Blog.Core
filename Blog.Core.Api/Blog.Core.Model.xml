@@ -261,24 +261,72 @@
             
             </summary>
         </member>
+        <member name="T:Blog.Core.Model.Models.JDCookiesInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.JDCookiesInfo.jJDUserName">
+            <summary>
+            Desc:用户名
+            Default:
+            Nullable:False
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.JDCookiesInfo.jJDCookie">
+            <summary>
+            Desc:cookie
+            Default:
+            Nullable:False
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.JDCookiesInfo.jDesc">
+            <summary>
+            Desc:描述信息
+            Default:
+            Nullable:True
+            </summary>
+        </member>
         <member name="P:Blog.Core.Model.Models.JDCookiesInfo.jCreateId">
             <summary>
-            创建ID
+            Desc:创建人
+            Default:
+            Nullable:False
             </summary>
         </member>
         <member name="P:Blog.Core.Model.Models.JDCookiesInfo.jStatus">
             <summary>
-            状态
+            Desc:状态
+            Default:
+            Nullable:True
             </summary>
         </member>
         <member name="P:Blog.Core.Model.Models.JDCookiesInfo.jUpdateTime">
-            <summary> 
-            修改时间
+            <summary>
+            Desc:更新时间
+            Default:
+            Nullable:True
             </summary>
         </member>
         <member name="P:Blog.Core.Model.Models.JDCookiesInfo.jCreateTime">
             <summary>
-            创建时间
+            Desc:创建时间
+            Default:
+            Nullable:True
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.JDCookiesInfo.jRemark">
+            <summary>
+            Desc:备注信息
+            Default:
+            Nullable:True
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.JDCookiesInfo.jPhone">
+            <summary>
+            Desc:手机号
+            Default:
+            Nullable:True
             </summary>
         </member>
         <member name="P:Blog.Core.Model.Models.JDLogsInfo.jId">
