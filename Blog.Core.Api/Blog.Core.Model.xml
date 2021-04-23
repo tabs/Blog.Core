@@ -1073,6 +1073,14 @@
             <param name="WebRootPath"></param>
             <returns></returns>
         </member>
+        <member name="M:Blog.Core.Model.Seed.DBSeed.SaveSeedDataAsync(Blog.Core.Model.Seed.MyContext,System.String)">
+            <summary>
+            异步添加种子数据
+            </summary>
+            <param name="myContext"></param>
+            <param name="environment"></param>
+            <returns></returns>
+        </member>
         <member name="M:Blog.Core.Model.Seed.FrameSeed.CreateControllers(SqlSugar.SqlSugarClient,System.String,System.Boolean,System.String[])">
             <summary>
             生成Controller层

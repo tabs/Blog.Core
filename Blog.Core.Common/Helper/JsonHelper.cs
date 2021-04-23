@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using System.Text.Json;
 
 namespace Blog.Core.Common.Helper
@@ -38,7 +40,7 @@ namespace Blog.Core.Common.Helper
         /// <typeparam name="T">类</typeparam>
         /// <param name="vals">列表值</param>
         /// <returns>JSON格式数据</returns>
-        public string JSON<T>(List<T> vals)
+        public static string JSON<T>(List<T> vals)
         {
             System.Text.StringBuilder st = new System.Text.StringBuilder();
             try
@@ -99,6 +101,32 @@ namespace Blog.Core.Common.Helper
             }
 
             return st.ToString();
+        }
+
+        /// <summary>
+        ///转换List<T>的数据为JSON并保存到文件 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="vals"></param>
+        /// <returns></returns>
+        public static bool SaveJsonToFile<T>(List<T> vals, string path)
+        {
+            string json = JSON(vals);
+            try
+            {
+                string savePath = Path.Combine(path, string.Format("{0}.tsv", typeof(T).Name));
+                using (FileStream fs = new FileStream(savePath, FileMode.OpenOrCreate))
+                {
+                    byte[] bs = Encoding.UTF8.GetBytes(json);
+                    fs.Write(bs, 0, bs.Length);
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+
+                return false;
+            }
         }
     }
 }

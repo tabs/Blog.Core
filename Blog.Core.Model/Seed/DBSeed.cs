@@ -320,5 +320,174 @@ namespace Blog.Core.Model.Seed
                     "3、其他错误：" + ex.Message);
             }
         }
+
+
+        /// <summary>
+        /// 异步添加种子数据
+        /// </summary>
+        /// <param name="myContext"></param>
+        /// <param name="environment"></param>
+        /// <returns></returns>
+        public static async Task SaveSeedDataAsync(MyContext myContext, string WebRootPath)
+        {
+            try
+            {
+                Console.WriteLine("Save DB Seed Data...");
+                string path = WebRootPath;
+                string savepath = Path.Combine(path, "BlogCore.Data.json");
+                Directory.Delete(savepath, true);
+                if (!Directory.Exists(savepath))
+                {
+                    Directory.CreateDirectory(savepath);
+                }
+
+                #region BlogArticle
+                if (!await myContext.Db.Queryable<BlogArticle>().AnyAsync())
+                {
+                }
+                else
+                {
+
+                    JsonHelper.SaveJsonToFile(myContext.GetEntityDB<BlogArticle>().GetList(), savepath);
+                    Console.WriteLine("Table:BlogArticle Saved success!");
+                }
+                #endregion
+
+
+                #region Module
+                if (!await myContext.Db.Queryable<Modules>().AnyAsync())
+                {
+                }
+                else
+                {
+                    JsonHelper.SaveJsonToFile(myContext.GetEntityDB<Modules>().GetList(), savepath);
+                    Console.WriteLine("Table:Module Saved success!");
+                }
+                #endregion
+
+
+                #region Permission
+                if (!await myContext.Db.Queryable<Permission>().AnyAsync())
+                {
+                }
+                else
+                {
+                    JsonHelper.SaveJsonToFile(myContext.GetEntityDB<Permission>().GetList(), savepath);
+                    Console.WriteLine("Table:Permission Saved success!");
+                }
+                #endregion
+
+
+                #region Role
+                if (!await myContext.Db.Queryable<Role>().AnyAsync())
+                {
+                }
+                else
+                {
+                    JsonHelper.SaveJsonToFile(myContext.GetEntityDB<Role>().GetList(), savepath);
+                    Console.WriteLine("Table:Role Saved success!");
+                }
+                #endregion
+
+
+                #region RoleModulePermission
+                if (!await myContext.Db.Queryable<RoleModulePermission>().AnyAsync())
+                {
+                }
+                else
+                {
+                    JsonHelper.SaveJsonToFile(myContext.GetEntityDB<RoleModulePermission>().GetList(), savepath);
+                    Console.WriteLine("Table:RoleModulePermission Saved success!");
+                }
+                #endregion
+
+
+                #region Topic
+                if (!await myContext.Db.Queryable<Topic>().AnyAsync())
+                {
+                }
+                else
+                {
+                    JsonHelper.SaveJsonToFile(myContext.GetEntityDB<Topic>().GetList(), savepath);
+                    Console.WriteLine("Table:Topic Saved success!");
+                }
+                #endregion
+
+
+                #region TopicDetail
+                if (!await myContext.Db.Queryable<TopicDetail>().AnyAsync())
+                {
+                }
+                else
+                {
+                    JsonHelper.SaveJsonToFile(myContext.GetEntityDB<TopicDetail>().GetList(), savepath);
+                    Console.WriteLine("Table:TopicDetail Saved success!");
+                }
+                #endregion
+
+
+                #region UserRole
+                if (!await myContext.Db.Queryable<UserRole>().AnyAsync())
+                {
+                }
+                else
+                {
+                    JsonHelper.SaveJsonToFile(myContext.GetEntityDB<UserRole>().GetList(), savepath);
+                    Console.WriteLine("Table:UserRole Saved success!");
+                }
+                #endregion
+
+
+                #region sysUserInfo
+                if (!await myContext.Db.Queryable<sysUserInfo>().AnyAsync())
+                {
+                }
+                else
+                {
+                    JsonHelper.SaveJsonToFile(myContext.GetEntityDB<sysUserInfo>().GetList(), savepath);
+                    Console.WriteLine("Table:sysUserInfo Saved success!");
+                }
+                #endregion
+
+                #region TasksQz
+                if (!await myContext.Db.Queryable<TasksQz>().AnyAsync())
+                {
+                }
+                else
+                {
+                    JsonHelper.SaveJsonToFile(myContext.GetEntityDB<TasksQz>().GetList(), savepath);
+                    Console.WriteLine("Table:TasksQz Saved success!");
+                }
+                #endregion
+
+                #region ck
+                if (!await myContext.Db.Queryable<JDCookiesInfo>().AnyAsync())
+                {
+                }
+                else
+                {
+                    JsonHelper.SaveJsonToFile(myContext.GetEntityDB<JDCookiesInfo>().GetList(), savepath);
+                    Console.WriteLine("Table:JDCookiesInfo Saved success!");
+                }
+                if (!await myContext.Db.Queryable<JDLogsInfo>().AnyAsync())
+                {
+                }
+                else
+                {
+                    JsonHelper.SaveJsonToFile(myContext.GetEntityDB<JDLogsInfo>().GetList(), savepath);
+                    Console.WriteLine("Table:JDLogsInfo Saved success!");
+                }
+                #endregion
+
+
+                Console.WriteLine("Done seeding database.");
+                Console.WriteLine();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("1、注意要先创建空的数据库\n2、" + ex.Message);
+            }
+        }
     }
 }

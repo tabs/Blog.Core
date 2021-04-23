@@ -22,6 +22,10 @@ namespace Blog.Core.Extensions
                 {
                     DBSeed.SeedAsync(myContext, webRootPath).Wait();
                 }
+                if (Appsettings.app("AppSettings", "SaveSeedDBEnabled").ObjToBool())
+                {
+                    DBSeed.SaveSeedDataAsync(myContext, webRootPath).Wait();
+                }
             }
             catch (Exception e)
             {
