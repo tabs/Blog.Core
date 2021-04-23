@@ -1,7 +1,5 @@
-﻿using Blog.Core.Common.Helper;
-using Blog.Core.IServices;
+﻿using Blog.Core.IServices;
 using Quartz;
-using System;
 using System.Threading.Tasks;
 
 /// <summary>
@@ -11,7 +9,7 @@ namespace Blog.Core.Tasks
 {
     public class Job_Blogs_Quartz : JobBase, IJob
     {
-        private readonly IBlogArticleServices _blogArticleServices;  
+        private readonly IBlogArticleServices _blogArticleServices;
 
         public Job_Blogs_Quartz(IBlogArticleServices blogArticleServices, ITasksQzServices tasksQzServices)
         {
