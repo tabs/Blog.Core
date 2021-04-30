@@ -38,7 +38,7 @@ namespace Blog.Core.Common.HttpContextUser
             return "";
         }
 
-        public int ID => GetClaimValueByType("jti").FirstOrDefault().ObjToInt();
+        public int ID => GetClaimValueByType("sub").FirstOrDefault().ObjToInt();
 
         public bool IsAuthenticated()
         {

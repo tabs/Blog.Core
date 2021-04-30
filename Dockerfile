@@ -20,6 +20,7 @@ COPY ["Blog.Core.Common/Blog.Core.Common.csproj", "Blog.Core.Common/"]
 COPY ["Blog.Core.Services/Blog.Core.Services.csproj", "Blog.Core.Services/"]
 COPY ["Blog.Core.Repository/Blog.Core.Repository.csproj", "Blog.Core.Repository/"]
 COPY ["Blog.Core.EventBus/Blog.Core.EventBus.csproj", "Blog.Core.EventBus/"]
+COPY ["Blog.Core.JdTask/Blog.Core.TaskJd.csproj", "Blog.Core.JdTask/"]
 RUN dotnet restore "Blog.Core.Api/Blog.Core.Api.csproj"
 COPY . .
 WORKDIR "/src/Blog.Core.Api"
