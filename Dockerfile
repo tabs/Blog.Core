@@ -9,6 +9,16 @@ FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim AS base
 WORKDIR /app
 EXPOSE 80
 
+RUN apt-get update -yq \
+    && apt-get install curl gnupg -yq \
+    && curl -sL https://deb.nodesource.com/setup_14.x | bash \
+    && apt-get install nodejs -yq
+	
+RUN apt-get update && \
+apt-get install libgdiplus libc6-dev -y && \
+ln -s /usr/lib/libgdiplus.so /usr/lib/gdiplus.dll && \
+ln -s /usr/lib/x86_64-linux-gnu/libdl.so /usr/lib/libdl.dll
+
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
 COPY ["Blog.Core.Api/Blog.Core.Api.csproj", "Blog.Core.Api/"]
@@ -28,9 +38,11 @@ RUN dotnet build "Blog.Core.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "Blog.Core.Api.csproj" -c Release -o /app/publish
-
+	
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+RUN cd jdjs \
+	&& npm install
 EXPOSE 8081 
 ENTRYPOINT ["dotnet", "Blog.Core.Api.dll"]
