@@ -301,6 +301,13 @@
             Nullable:True
             </summary>
         </member>
+        <member name="P:Blog.Core.Model.Models.JDCookiesInfo.jValidation">
+            <summary>
+            Desc:是否失效
+            Default:
+            Nullable:True
+            </summary>
+        </member>
         <member name="P:Blog.Core.Model.Models.JDCookiesInfo.jUpdateTime">
             <summary>
             Desc:更新时间

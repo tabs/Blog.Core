@@ -47,7 +47,15 @@ namespace Blog.Core.Model.Models
         /// Default:
         /// Nullable:True
         /// </summary>
-        public int? jStatus { get; set; }
+        [SugarColumn(IsNullable = true)]
+        public bool jStatus { get; set; }
+        /// <summary>
+        /// Desc:是否失效
+        /// Default:
+        /// Nullable:True
+        /// </summary>
+        [SugarColumn(IsNullable = true)]
+        public bool jValidation { get; set; }
         /// <summary>
         /// Desc:更新时间
         /// Default:

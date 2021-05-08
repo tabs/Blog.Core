@@ -1,17 +1,17 @@
 var funJdsign = require("./jdsign");
 var fucGetCookie = require("./getJdCookie");
 var httpUtils = require("./nobyda")
-var ck = "pt_key=AAJgNGWFADBm4Mq59IDGlbSSyymLJrlLDIjGGipr4q8dpbkJ8iWF2tr_TghsXkdlQI2I8zQIEpo;pt_pin=jd_624f191cc0540;";
+// var ck = "pt_key=AAJgNGWFADBm4Mq59IDGlbSSyymLJrlLDIjGGipr4q8dpbkJ8iWF2tr_TghsXkdlQI2I8zQIEpo;pt_pin=jd_624f191cc0540;";
 
 
 
 
-funJdsign.jdsign.JDSecKilling(ck).then(function (res) {
-    var msg = res;
-    console.log(msg);
-  }, function (err) {
-    console.log(err);
-  })
+// funJdsign.jdsign.JingDongBean(ck).then(function (res) {
+//   var msg = res;
+//   console.log(msg);
+// }, function (err) {
+//   console.log(err);
+// })
 
 //链式调用
 // funJdsign.jdsign.JingDongBean(ck).then(function (res) {
@@ -40,12 +40,24 @@ var jdfunc = {
       funJdsign.jdsign.JingDongTurn(ck),
       funJdsign.jdsign.JDFlashSale(ck),
       funJdsign.jdsign.JingDongCash(ck),
-      funJdsign.jdsign.JDMagicCube(ck,1),
+      funJdsign.jdsign.JDMagicCube(ck, 1),
       funJdsign.jdsign.JingDongGetCash(ck),
       funJdsign.jdsign.JingDongSubsidy(ck),
       funJdsign.jdsign.JingDongShake(ck),
       funJdsign.jdsign.JDSecKilling(ck)
     ]);
+  },
+  jdchkck: function (callback, ckid, ck) {
+    funJdsign.jdsign.JingDongBean(ck).then(function (msg) {
+      var retvalue = {
+        id: ckid,
+        msg: msg,
+        ck: ck
+      }
+      callback(null, retvalue);
+    }).catch((result) => {
+      console.log(result)
+    })
   },
   jdsign: function (callback, ckid, ck) {
     // httpUtils.nobyda.log2File(`ckid:${ckid}\n`);

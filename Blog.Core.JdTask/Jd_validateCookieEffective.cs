@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace Blog.Core.TaskJd
 {
-    public class Jd_Quartz : JobBase, IJob
+    public class Jd_validateCookieEffective : JobBase, IJob
     {
         private readonly INodeServices _nodeServices;
         private readonly IJDCookiesInfoServices _cookiesInfoServices;
         private readonly IJDLogsInfoServices _logsInfoServices;
 
-        public Jd_Quartz(IJDCookiesInfoServices cookiesInfoServices, ITasksQzServices tasksQzServices, INodeServices nodeServices,
+        public Jd_validateCookieEffective(IJDCookiesInfoServices cookiesInfoServices, ITasksQzServices tasksQzServices, INodeServices nodeServices,
             IJDLogsInfoServices logsInfoServices)
         {
             _cookiesInfoServices = cookiesInfoServices;
@@ -47,19 +47,23 @@ namespace Blog.Core.TaskJd
                 {
                     foreach (var ck in list)
                     {
-                        var task = _nodeServices.InvokeExportAsync<retValue>("./jdjs/index.js", "jdsign", ck.Id, ck.jJDCookie);
+                        var task = _nodeServices.InvokeExportAsync<retValue>("./jdjs/index.js", "jdchkck", ck.Id, ck.jJDCookie);
                         tasks.Add(task);
                         
                     }
                     foreach (var t in tasks)
                     {
                         retValue ret = await t;
-                        JDLogsInfo logsInfo = new JDLogsInfo();
-                        logsInfo.JDetail = ret.msg;
-                        logsInfo.jDesc = "";
-                        logsInfo.jCreateTime = DateTime.Now;
-                        logsInfo.jId = ret.id;
-                        await _logsInfoServices.Add(logsInfo);
+                        JDCookiesInfo cookieInfo = await _cookiesInfoServices.QueryById(ret.id);
+                        if (ret.msg.Contains("失效"))
+                        {
+                            cookieInfo.jValidation = false;
+                        }
+                        else
+                        {
+                            cookieInfo.jValidation = true;
+                        }
+                        await _cookiesInfoServices.Update(cookieInfo);
                     }
                 }
                 if (jobid > 0)
