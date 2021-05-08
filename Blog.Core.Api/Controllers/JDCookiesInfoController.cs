@@ -153,6 +153,7 @@ namespace Blog.Core.Api.Controllers
                             cookiesInfo.jJDCookie = result.ck;
                             cookiesInfo.jCreateId = result.userId;
                             cookiesInfo.jDesc = result.desc;
+                            cookiesInfo.jValidation = true;
                             await _jDCookiesInfoServices.Update(cookiesInfo);
                         }
                         else
