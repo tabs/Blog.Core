@@ -63,7 +63,7 @@ namespace Blog.Core.Api.Controllers
                 key = "";
             }
 
-            Expression<Func<JDCookiesInfo, bool>> whereExpression = n => n.jCreateId == _user.ID;
+            Expression<Func<JDCookiesInfo, bool>> whereExpression = n => n.jCreateId == _user.ID && n.jStatus == true;
 
             return new MessageModel<PageModel<JDCookiesInfo>>()
             {

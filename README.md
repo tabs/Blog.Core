@@ -195,15 +195,17 @@ Blog.Core 开箱即用的企业级前后端分离【 .NET Core5.0 Api + Vue 2.x 
 ```
 
 docker build -t chaego/jdcore:v1.0 .
-
+docker build -t registry.cn-qingdao.aliyuncs.com/chaego/chaego:jdcore_v1.0.hk1x3 .
 docker run -p 8083:8083 --name jdcore -d chaego/jdcore:v1.0
 
 docker build -t chaego/ids:v1.0 .
-
+docker build -t registry.cn-qingdao.aliyuncs.com/chaego/chaego:ids_v1.0.hk1x3 .
 
 docker run -p 5005:5005 --name ids -d chaego/ids:v1.0
 
 docker build -f F:\Source\Blog.Admin\Dockerfile2 -t chaego/jdcoreadmin:v1.0 .
+
+docker build -f ./Dockerfile2 -t registry.cn-qingdao.aliyuncs.com/chaego/chaego:jdcoreadmin_v1.0.hk1x3 .
 
 docker run -p 81:80 --name jdcoreadmin -d chaego/jdcoreadmin:v1.0
 
