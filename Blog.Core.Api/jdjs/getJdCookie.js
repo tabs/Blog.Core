@@ -5,6 +5,7 @@ const qrcode = require('qrcode-terminal');
 
 function getCookiefunc() {
     const $ = new Env('扫码获取京东cookie');
+    const JD_UA = `Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3_2 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8H7 Safari/6533.18.5 UCBrowser/13.4.2.1122`;
     var s_token = undefined;
     var cookies = undefined;
     var guid = undefined;
@@ -84,7 +85,7 @@ function getCookiefunc() {
                     'Connection': 'Keep-Alive',
                     'Content-Type': 'application/x-www-form-urlencoded; Charset=UTF-8',
                     'Accept': 'application/json, text/plain, */*',
-                    'User-Agent':'Mozilla/5.0 (iPhone; CPU iPhone OS 13_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 SP-engine/2.14.0 main%2F1.0 baiduboxapp/11.18.0.16 (Baidu; P2 13.3.1) NABar/0.0',
+                    'User-Agent':JD_UA,
                 }
             }
             $.post(options, (err, resp, data) => {
@@ -192,7 +193,7 @@ function getCookiefunc() {
                 'Accept': 'application/json, text/plain, */*',
                 'Accept-Language': 'zh-cn',
                 'Referer': `https://plogin.m.jd.com/login/login?appid=300&returnurl=https://wq.jd.com/passport/LoginRedirect?state=${Date.now()}&returnurl=https://home.m.jd.com/myJd/newhome.action?sceneval=2&ufc=&/myJd/home.action&source=wq_passport`,
-                'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 SP-engine/2.14.0 main%2F1.0 baiduboxapp/11.18.0.16 (Baidu; P2 13.3.1) NABar/0.0',
+                'User-Agent': JD_UA,
                 'Host': 'plogin.m.jd.com'
             }
         }
@@ -208,7 +209,7 @@ function getCookiefunc() {
                 'Accept': 'application/json, text/plain, */*',
                 'Accept-Language': 'zh-cn',
                 'Referer': `https://plogin.m.jd.com/login/login?appid=300&returnurl=https://wq.jd.com/passport/LoginRedirect?state=${Date.now()}&returnurl=https://home.m.jd.com/myJd/newhome.action?sceneval=2&ufc=&/myJd/home.action&source=wq_passport`,
-                'User-Agent':'Mozilla/5.0 (iPhone; CPU iPhone OS 13_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 SP-engine/2.14.0 main%2F1.0 baiduboxapp/11.18.0.16 (Baidu; P2 13.3.1) NABar/0.0',
+                'User-Agent':JD_UA,
                 'Host': 'plogin.m.jd.com'
             }
         }
