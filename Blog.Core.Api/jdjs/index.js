@@ -106,5 +106,7 @@ var jdfunc = {
     }
   }
 }
-
+// jdfunc.getQrCode(function(qrcode){
+//   console.log(qrcode);
+// },1);
 module.exports = jdfunc;
